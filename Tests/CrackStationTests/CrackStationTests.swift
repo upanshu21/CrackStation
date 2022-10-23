@@ -16,7 +16,7 @@ final class CrackStationTests: XCTestCase {
         
         let crackstation = CrackStation();
         let result = try crackstation.crack(password: "ff")
-        XCTAssertEqual(result, "does not exit")
+        XCTAssertEqual(result, "cannot crack input hash. The given hash does not exist in the database")
     }
     
     func testGivenCrackApi_WhenUpperCaseAlphabetHashIsGiven_ThenShouldDecrypt() throws {
