@@ -9,7 +9,7 @@ public class DictionaryService {
         return output.description
     }
     
-    public func createLookup() throws -> [String : String] {
+    public func createLookup() -> [String : String] {
         
         var emptyDictionary = [String: String]()
         for char in "abcdefghijklmnopqrstuvwxyz" {
