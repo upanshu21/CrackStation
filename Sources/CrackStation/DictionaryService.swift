@@ -11,18 +11,18 @@ public class DictionaryService {
     
     public func createLookup() -> [String : String] {
         
-        var emptyDictionary = [String: String]()
+        var dictionary = [String: String]()
         for char in "abcdefghijklmnopqrstuvwxyz" {
-            emptyDictionary[String(encryptUsingSha1(from: String(char)).suffix(40))] = String(char)
+            dictionary[String(encryptUsingSha1(from: String(char)).suffix(40))] = String(char)
         }
         for char in "abcdefghijklmnopqrstuvwxyz" {
-            emptyDictionary[String(encryptUsingSha1(from: String(char).uppercased()).suffix(40))] = String(char).uppercased()
+            dictionary[String(encryptUsingSha1(from: String(char).uppercased()).suffix(40))] = String(char).uppercased()
         }
         
         for char in "0123456789"  {
-            emptyDictionary[String(encryptUsingSha1(from: String(char).uppercased()).suffix(40))] = String(char).uppercased()
+            dictionary[String(encryptUsingSha1(from: String(char).uppercased()).suffix(40))] = String(char).uppercased()
         }
-        return emptyDictionary;
+        return dictionary;
     }
     
 }
