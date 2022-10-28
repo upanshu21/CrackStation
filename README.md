@@ -10,10 +10,10 @@ This is a Swift project for decrypting/cracking any single character password wh
 once this is added as the dependency
 
 - You can import the CrackStation module and instantiate the CrackStation class
-- Use the instance to call the **crack(password: String)** function which takes hash in String form as parameter.
-- The **crack()** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9]**, it will return "does not exist" as message.
+- Use the instance to call the **decrypt(shaHash: String)** function which takes hash in String form as parameter.
+- The **decrypt(shaHash: String)** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9]**, it will return "does not exist" as message.
 
-Check the below code to see how you can import the module and use the **crack()** function.
+Check the below code to see how you can import the module and use the **decrypt(shaHash: String)** function.
 
 ```
 import CrackStation
@@ -23,7 +23,7 @@ class DemoClass {
     public func justAFunctionTocheckPackageImport() throws {
         
         let importInstance = CrackStation();
-        print(try importInstance.crack(password: "put the hash here"))
+        print(importInstance.decrypt(shaHash: "put your hash here"))
     }
 
 }
