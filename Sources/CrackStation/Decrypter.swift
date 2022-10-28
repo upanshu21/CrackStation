@@ -5,6 +5,6 @@ public protocol Decrypter {
     
     init()
     
-    func decrypt(shahash: String) -> String?
+    func decrypt(shaHash: String) -> String?
     
 }
