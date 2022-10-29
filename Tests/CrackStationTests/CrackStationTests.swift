@@ -19,7 +19,7 @@ final class CrackStationTests: XCTestCase {
         XCTAssertEqual(result, nil)
     }
     
-    func testGivenCrackApi_WhenUpperCaseAlphabetHashIsGiven_ThenShouldDecrypt() throws {
+    func testGivenCrackApi_WhenUpperCaseAlphabetHashIsGiven_ThenShouldDecrypt() {
         
         let crackstation = CrackStation();
         let result = crackstation.decrypt(shaHash: "6dcd4ce23d88e2ee9568ba546c007c63d9131c1b")
@@ -28,7 +28,7 @@ final class CrackStationTests: XCTestCase {
         XCTAssertEqual(resultTwo, "Z")
     }
     
-    func testGivenCrackApi_WhenNumericHashIsGiven_ThenShouldDecrypt() throws {
+    func testGivenCrackApi_WhenNumericHashIsGiven_ThenShouldDecrypt() {
         let crackstation = CrackStation();
         let result = crackstation.decrypt(shaHash: "356a192b7913b04c54574d18c28d46e6395428ab");
         let resultTwo = crackstation.decrypt(shaHash: "0ade7c2cf97f75d009975f4d720d1fa6c19f4897");
