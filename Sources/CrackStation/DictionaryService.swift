@@ -14,18 +14,21 @@ public class DictionaryService {
     public func createLookup() -> [String : String] {
         
         var dictionary = [String: String]()
-        let string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?"
 
         for char in string {
-            dictionary[String(encryptUsingSha1(from: String(char)))] = String(char)
+            let password = String(char)
+            dictionary[encryptUsingSha1(from: password)] = password
         }
         
-        for i in string {
-            for j in string {
-                let elem = String(i).appending(String(j))
-                dictionary[String(encryptUsingSha1(from: String(elem)))] = String(elem)
+        for firstChar in string {
+            for secondChar in string {
+                let password = String(firstChar) + String(secondChar)
+                dictionary[encryptUsingSha1(from: password)] = password
+                
             }
         }
+        
         return dictionary;
     }
     

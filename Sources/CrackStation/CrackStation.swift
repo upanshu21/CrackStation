@@ -2,12 +2,14 @@ import Foundation
 
 public class CrackStation: Decrypter {
     
-    required public init() {}
+    let dictionary: [String:String]
+    
+    required public init() {
+        dictionary = DictionaryService().createLookup()
+    }
     
     public func decrypt(shaHash: String) -> String? {
-       let lookUp = DictionaryService();
-       let dictionary = lookUp.createLookup();
-       return dictionary[shaHash] ;
+       return dictionary[shaHash]
     }
     
 }
