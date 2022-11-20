@@ -4,7 +4,7 @@
 
 ### Author name: Upanshu Chaudhary
 
-This is a Swift project for decrypting/cracking any single or double character password which matches the regex **[A-Za-z0-9?!]{1,3}**.
+This is a Swift project for decrypting/cracking any single, double or three character password which matches the regex **[A-Za-z0-9?!]{1,3}**.
 
 for eg: Provide a Hash for `aa`, `Ka`, `!!!`, `A5?`, `b` and it will decrypt the hash and provide you the correct encypted output.
 
