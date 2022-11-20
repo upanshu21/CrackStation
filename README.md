@@ -1,4 +1,4 @@
-# CrackStation POCv1 and POCv2
+# CrackStation
 
 ### Current stable version: `1.1.0`
 
@@ -37,7 +37,7 @@ once this is added as the dependency
 
 - You can import the CrackStation module and instantiate the CrackStation class
 - Use the instance to call the **decrypt(shaHash: String)** function which takes hash in String form as parameter.
-- The **decrypt(shaHash: String)** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9]**, it will return nil.
+- The **decrypt(shaHash: String)** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9?!]{1,3}**, it will return nil.
 
 Check the below code to see how you can import the module and use the **decrypt(shaHash: String)** function.
 
