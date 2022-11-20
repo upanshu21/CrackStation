@@ -5,8 +5,6 @@ import CryptoKit
 final class CrackStationTests: XCTestCase {
     
     let crackstation = CrackStation();
-    let dict = DictionaryService().createLookup()
-    let s = DictionaryService()
     
     func testGivenCrackApi_WhenHashIsGiven_thenGiveCorrectOutput() {
         let result = crackstation.decrypt(shaHash: "86f7e437faa5a7fce15d1ddcb9eaeaea377667b8")
