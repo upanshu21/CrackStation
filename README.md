@@ -10,7 +10,7 @@ for eg: Provide a Hash for `aa`, `Ka`, `!!!`, `A5?`, `b` and it will decrypt the
 
 ## Mission Statement
 
-This is a public library and can be used by anyone to test if the passwrod used by them or user of their product is using a combination of very easy password and have them change is if their password is decrypted by this implementation.
+This is a public library and can be used by anyone to test if the password used by them or user of their product is using a very easy password and have them change is if their password is decrypted by this implementation.
 
 ## Installation
 
@@ -39,25 +39,35 @@ If you are added as a colaborator you can also add it with this method:
             
 ## Usage
 
-- You can import the CrackStation module and instantiate the CrackStation class
-- Use the instance to call the **decrypt(shaHash: String)** function which takes hash in String form as parameter.
-- The **decrypt(shaHash: String)** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9?!]{1,3}**, it will return nil.
+### API
 
-Check the below code to see how you can import the module and use the **decrypt(shaHash: String)** function.
+```
+    func decrypt(shaHash: String) -> String?
+```
+
+- You can import the CrackStation module and instantiate the CrackStation class. The Crackstation is an implementation of Decrpyter Protocol. So you can use the Decrypter protocol to use the crackstation API.
 
 ```
 import CrackStation
 
-class DemoClass {
+public struct CrackStationUseCase: Decrypter {
+    private let decrypterObject: Decrypter
 
-    public func justAFunctionTocheckPackageImport() throws {
-        
-        let importInstance = CrackStation();
-        print(importInstance.decrypt(shaHash: "put your hash here"))
+    public init() {
+            decrypterObject = CrackStation()
     }
-
+    
+    // now you can call the decrypterObject.decrypt(shaHash: "put your hash here")
+    
+    public func justAFunctionTocheckPackageImport() throws {
+        print(decrypterObject.decrypt(shaHash: "put your hash here"))
+    }
 }
 ```
+
+- Use the instance to call the **decrypt(shaHash: String)** function which takes hash in String form as parameter.
+- The **decrypt(shaHash: String)** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9?!]{1,3}**, it will return nil.
+
 
 ## Author 
 
