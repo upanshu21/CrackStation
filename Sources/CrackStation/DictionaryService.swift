@@ -11,24 +11,34 @@ public class DictionaryService {
         return shaHash
     }
     
+    public func encryptUsingSha256(from: String) -> String {
+        let dataToHash = Data(from.utf8)
+        let prefix = "SHA256 digest:  "
+        let shaHashDescription = String(SHA256.hash(data: dataToHash).description)
+        let shaHash = String(shaHashDescription.dropFirst(prefix.count - 1))
+        return shaHash
+    }
+    
     public func createLookup() -> [String : String] {
         
         var dictionary = [String: String]()
         let string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?"
-
-        for char in string {
-            let password = String(char)
-            dictionary[encryptUsingSha1(from: password)] = password
-        }
-        
         for firstChar in string {
+            let singleCharacter = String(firstChar)
+            dictionary[encryptUsingSha1(from: singleCharacter)] = singleCharacter
+            dictionary[encryptUsingSha256(from: singleCharacter)] = singleCharacter
             for secondChar in string {
-                let password = String(firstChar) + String(secondChar)
-                dictionary[encryptUsingSha1(from: password)] = password
-                
+                let doubleCharacter = String(firstChar) + String(secondChar)
+                dictionary[encryptUsingSha1(from: doubleCharacter)] = doubleCharacter
+                dictionary[encryptUsingSha256(from: doubleCharacter)] = doubleCharacter
+                for thirdChar in string {
+                    let password = String(firstChar) + String(secondChar) + String(thirdChar)
+                    dictionary[encryptUsingSha1(from: password)] = password
+                    dictionary[encryptUsingSha256(from: password)] = password
+
+                }
             }
         }
-        
         return dictionary;
     }
     

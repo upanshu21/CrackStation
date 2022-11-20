@@ -1,9 +1,12 @@
 import XCTest
+import CryptoKit
 @testable import CrackStation
 
 final class CrackStationTests: XCTestCase {
     
     let crackstation = CrackStation();
+    let dict = DictionaryService().createLookup()
+    let s = DictionaryService()
     
     func testGivenCrackApi_WhenHashIsGiven_thenGiveCorrectOutput() {
         let result = crackstation.decrypt(shaHash: "86f7e437faa5a7fce15d1ddcb9eaeaea377667b8")
@@ -59,6 +62,60 @@ final class CrackStationTests: XCTestCase {
         let resultTwo = crackstation.decrypt(shaHash: "62bd650a8380e4c0ba1db576801b7a1f4725de18");
         XCTAssertEqual(result, "LL");
         XCTAssertEqual(resultTwo, "FC");
+    }
+    
+    func testGivenCrackApiWithSha1_WhenAllCharacterCombinationsAreGiven_ThenShouldDecrypt() {
+        DispatchQueue.concurrentPerform(iterations: arrayOfCombinations.count) {
+            password in
+            let expectedPassword = arrayOfCombinations[password]
+            let passwordEncryption = encrypt(expectedPassword)
+            let actualPassword = crackstation.decrypt(shaHash: passwordEncryption)
+            XCTAssertEqual(actualPassword, expectedPassword)
+        }
+    }
+    
+    func testGivenCrackApiWithSha256_WhenAllCharacterCombinationsAreGiven_ThenShouldDecrypt() {
+        DispatchQueue.concurrentPerform(iterations: arrayOfCombinations.count) {
+            password in
+            let expectedPassword = arrayOfCombinations[password]
+            let passwordEncryption = encryptSha256(expectedPassword)
+            let actualPassword = crackstation.decrypt(shaHash: passwordEncryption)
+            XCTAssertEqual(expectedPassword, actualPassword)
+        }
+    }
+   
+    lazy var arrayOfCombinations = getAllCombinations()
+    
+    private func getAllCombinations() -> [String] {
+        var combinationArray = [String]()
+        let string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?"
+        for char in string {
+            combinationArray.append(String(char))
+            for secondChar in string {
+                combinationArray.append(String(char) + String(secondChar))
+                for thirdChar in string {
+                    combinationArray.append(String(char) + String(secondChar) + String(thirdChar))
+
+                }
+            }
+        }
+        return combinationArray
+    }
+    
+    private func encrypt(_ password: String) -> String {
+        let dataToHash = Data(password.utf8)
+        let prefix = "SHA 1 digest: "
+        let shaHashDescription = String(Insecure.SHA1.hash(data: dataToHash).description)
+        let shaHash = String(shaHashDescription.dropFirst(prefix.count - 1))
+        return shaHash
+    }
+    
+    private func encryptSha256(_ password: String) -> String {
+        let dataToHash = Data(password.utf8)
+        let prefix = "SHA256 digest:  "
+        let shaHashDescription = String(SHA256.hash(data: dataToHash).description)
+        let shaHash = String(shaHashDescription.dropFirst(prefix.count - 1))
+        return shaHash
     }
     
 }
