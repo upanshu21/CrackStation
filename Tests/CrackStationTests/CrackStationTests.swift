@@ -81,7 +81,7 @@ final class CrackStationTests: XCTestCase {
             XCTAssertEqual(expectedPassword, actualPassword)
         }
     }
-   
+    
     lazy var arrayOfCombinations = getAllCombinations()
     
     private func getAllCombinations() -> [String] {
@@ -93,7 +93,7 @@ final class CrackStationTests: XCTestCase {
                 combinationArray.append(String(char) + String(secondChar))
                 for thirdChar in string {
                     combinationArray.append(String(char) + String(secondChar) + String(thirdChar))
-
+                    
                 }
             }
         }

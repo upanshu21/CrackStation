@@ -1,12 +1,12 @@
 # CrackStation POCv1 and POCv2
 
-### Current stable version: `1.0.0`
+### Current stable version: `1.1.0`
 
 ### Author name: Upanshu Chaudhary
 
-This is a Swift project for decrypting/cracking any single or double character password which matches the regex **[A-Za-z0-9]** and **[A-Za-z0-9]{1,2}**.
+This is a Swift project for decrypting/cracking any single or double character password which matches the regex **[A-Za-z0-9?!]{1,3}**.
 
-for eg: Provide a Hash for `aa`, `Ka`, `09`, `1`, `b` and it will decrypt the hash and provide you the correct encypted output.
+for eg: Provide a Hash for `aa`, `Ka`, `!!!`, `A5?`, `b` and it will decrypt the hash and provide you the correct encypted output.
 
 ## Steps to use it
 
@@ -19,7 +19,7 @@ If you are added as a colaborator you can also add it with this method:
 
 ```   dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "git@github.com:upanshu21/CrackStation.git", from: "1.0.0")
+        .package(url: "git@github.com:upanshu21/CrackStation.git", from: "1.1.0")
     ],
 ```
 
@@ -37,7 +37,7 @@ once this is added as the dependency
 
 - You can import the CrackStation module and instantiate the CrackStation class
 - Use the instance to call the **decrypt(shaHash: String)** function which takes hash in String form as parameter.
-- The **decrypt(shaHash: String)** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9]**, it will return "does not exist" as message.
+- The **decrypt(shaHash: String)** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9]**, it will return nil.
 
 Check the below code to see how you can import the module and use the **decrypt(shaHash: String)** function.
 

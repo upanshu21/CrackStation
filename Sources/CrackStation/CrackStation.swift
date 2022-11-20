@@ -6,7 +6,7 @@ public class CrackStation: Decrypter {
     }
     
     public func decrypt(shaHash: String) -> String? {
-       return DictionaryService.hashDictionary[shaHash]
+        return DictionaryService.hashDictionary[shaHash]
     }
     
 }
