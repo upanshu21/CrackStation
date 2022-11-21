@@ -10,14 +10,14 @@ for eg: Provide a Hash for `aa`, `Ka`, `!!!`, `A5?`, `b` and it will decrypt the
 
 ## Mission Statement
 
-This is a public library and can be used by anyone to test if the password used by them or user of their product is using a very easy password and have them change is if their password is decrypted by this implementation.
+This is a public library and can be used by anyone to test if the password used by them or user of their product is using a very easy password and have them change it if their password is decrypted by this implementation.
 
 ## Installation
 
 - You can drag and drop this package into your current package to use as a dependency. 
 - Add this package in the Framework, Libraries and Embedded Content in your Xcode project.
 
-If you are added as a colaborator you can also add it with this method:
+If you are added as a collaborator you can also add it with this method:
 
 - In your `Package.swift` add 
 
