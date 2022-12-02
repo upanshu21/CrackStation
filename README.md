@@ -66,7 +66,7 @@ public struct CrackStationUseCase: Decrypter {
 ```
 
 - Use the instance to call the ```decrypt(shaHash: String)``` function which takes hash in String form as parameter.
-- The ```decrypt(shaHash: String)``` function will return a characters after decrypting the hash. If the hash does not belong to a character matching the regex ```[A-Za-z0-9?!]{1,3}```, it will return nil.
+- The ```decrypt(shaHash: String)``` function will return password after decrypting the hash. If the hash does not belong to a character or combination of characters matching the regex ```[A-Za-z0-9?!]{1,3}```, it will return nil.
 
 ## Author 
 
