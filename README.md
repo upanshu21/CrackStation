@@ -1,10 +1,10 @@
 # CrackStation, a Decrypter Implementation
 
-### Current stable version: `1.1.0`
+### Current stable version: `1.1.1`
 
 ## Overview
 
-This is a Swift project for decrypting/cracking any single, double or three character password which matches the regex **[A-Za-z0-9?!]{1,3}**. This will only crack unsalted hashes.
+This is a Swift project for decrypting/cracking any single, double or three-character password which matches the regex ```[A-Za-z0-9?!]{1,3}```. This will only crack unsalted hashes.
 
 for eg: Provide a Hash for `aa`, `Ka`, `!!!`, `A5?`, `b` and it will decrypt the hash and provide you the correct encypted output.
 
@@ -14,7 +14,7 @@ This is a public library and can be used by anyone to test if the password used 
 
 ## Installation
 
-- You can drag and drop this package into your current package to use as a dependency. 
+- You can drag-and-drop this package into your current package to use as a dependency. 
 - Add this package in the Framework, Libraries and Embedded Content in your Xcode project.
 
 If you are added as a collaborator you can also add it with this method:
@@ -65,8 +65,8 @@ public struct CrackStationUseCase: Decrypter {
 }
 ```
 
-- Use the instance to call the **decrypt(shaHash: String)** function which takes hash in String form as parameter.
-- The **decrypt(shaHash: String)** function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex **[A-Za-z0-9?!]{1,3}**, it will return nil.
+- Use the instance to call the ```decrypt(shaHash: String)``` function which takes hash in String form as parameter.
+- The ```decrypt(shaHash: String)``` function will return a single character after decrypting the hash. If the hash does not belong to a single character matching the regex ```[A-Za-z0-9?!]{1,3}```, it will return nil.
 
 
 ## Author 

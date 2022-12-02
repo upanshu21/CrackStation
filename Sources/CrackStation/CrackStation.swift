@@ -2,7 +2,7 @@ import Foundation
 
 public class CrackStation: Decrypter {
     
-    private static var hashDictionary : [String:String] = loadDictionaryFromDisk()
+    private static let hashDictionary : [String:String] = loadDictionaryFromDisk()
     
     required public init() {
     }
@@ -11,7 +11,7 @@ public class CrackStation: Decrypter {
         return Self.hashDictionary[shaHash]
     }
     
-    static func loadDictionaryFromDisk() -> [String : String] {
+    private static func loadDictionaryFromDisk() -> [String : String] {
         guard let path = Bundle.module.url(forResource: "data", withExtension: "json") else { return [:] }
         do{
             let data = try Data(contentsOf: path)
